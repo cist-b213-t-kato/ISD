@@ -1,0 +1,67 @@
+
+body{
+    font-family: "Meiryo"
+}
+button, input, select, textarea{
+    font-family: inherit;
+    -webkit-box-sizing: border-box; /* 過去の WebKit ベースブラウザ向け */
+    -moz-box-sizing: border-box; /* 過去の (Firefox <29) Gecko ベースブラウザ向け */
+    box-sizing: border-box;
+}
+
+input{
+    width: 100%;
+}
+
+
+#testItemTable{
+    background-color: #FFFFFF;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    border: 1px #606060 solid;
+}
+
+#testItemTable th{
+    color: #FFFFFF;
+    background-color: #5080E0;
+    border: 1px #606060 solid;
+    /*border-color: #FFFFFF;*/
+}
+#testItemTable td{
+    border: 1px #606060 solid;
+}
+
+.testItemInput{
+    background-color: #AAAAAA;
+    /*margin: 20px;*/
+}
+
+.boxA{
+    width: 80%;
+    max-width: 500px;
+    background-color: #C0C0C0;
+    margin: 0px auto;
+}
+
+.boxA:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.text{
+    float: left;
+    width: 30%;
+    /*background-color: #E0E0F0;*/
+    text-align: right;
+}
+
+.textField{
+    float: right;
+    width: 66%;
+    background-color: #F0E0E0;
+    text-align: left;
+}
+
+
+
