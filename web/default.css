@@ -1,9 +1,11 @@
 
 body{
-    font-family: "Meiryo"
+    font-family: "Meiryo";
+    color: #303030;
 }
 button, input, select, textarea{
     font-family: inherit;
+    color: inherit;
     -webkit-box-sizing: border-box; /* 過去の WebKit ベースブラウザ向け */
     -moz-box-sizing: border-box; /* 過去の (Firefox <29) Gecko ベースブラウザ向け */
     box-sizing: border-box;
@@ -11,6 +13,10 @@ button, input, select, textarea{
 
 input{
     width: 100%;
+}
+
+textarea{
+    resize: none;
 }
 
 

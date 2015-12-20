@@ -11,33 +11,38 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>JSP Page</title>
-    <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/edit.css"/>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/default.css"/>
 </head>
 <body>
-    <h3>やったぜ。</h3>
-    <p>投稿者: 変態JSP親父  
-        <%
-            Calendar now = Calendar.getInstance();
-            out.println("8月"+"16日"+"（水）");
-        %>
-    </p>
     
-    <table id="testItemTable">
+    <span>製品Ａ テスト項目</span>
+    <table id="testItemTable" width="500px">
         <tr>
-            <th>テスト番号</th>
-            <th>種別</th>
-            <th>実行ステップ</th>
-            <th>期待される出力</th>
+            <th width="50px">番号</th>
+            <th width="70px">種別</th>
+            <th width="200px">実行ステップ</th>
+            <th width="150px">期待される出力</th>
         </tr>
         <tr>
             <td>1</td>
             <td>正常系</td>
+            <td>1.「出席を提出する」ボタンをクリックする</td>
+            <td>入力フォームが表示される</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>正常系</td>
+            <td>2.表示されたフォームにパスワード（1234）を入力し、「送信」ボタンを押す</td>
             <td></td>
-            <td></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>異常系</td>
+            <td>1.「出席を提出する」 ボタンをクリックする</td>
+            <td>入力フォームが表示される</td>
         </tr>
     </table>
     
-    <!--<div style="text-align:center">-->
     <form>
     <table border="0">
         <tr>
@@ -51,16 +56,15 @@
         </tr>
         <tr>
             <td align="right">実行ステップ</td>
-            <td><input style="width:100px" type="text"/></td>
+            <td><textarea name="step" cols="20" rows="1"/></textarea></td>
         </tr>
         <tr>
             <td align="right">期待される出力</td>
-            <td><input style="width:100px" type="text"/></td>
+            <td><textarea name="expectedResult" cols="20" rows="1"></textarea></td>
         </tr>
     </table>
     <input style="width:80px" type="submit" value="追加する"/>
     </form>
-    <!--</div>-->
     
     <a href="./testItemPage.jsp">ｺﾛｼｱｴｰ</a>
 </body>
