@@ -30,11 +30,11 @@ public class SignInServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //TODO サインイン機能を完成させる
-        boolean isSignInSuceed = false;
+        boolean isSignInSuceed = false;        
         if(isSignInSuceed == false){
-            resp.sendRedirect("./SignIn");
-        }else{
             resp.sendRedirect("./Index");
+        }else{
+            resp.sendRedirect("./SignIn");
         }
     }
     

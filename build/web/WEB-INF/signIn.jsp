@@ -13,10 +13,10 @@
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/default.css"/>
 </head>
 <body>
-    <h1>Sign in</h1>
+    <h1>Sign In</h1>
     <form action="./SignIn" method="POST">
     <div>
-        <label>ユーザID</label>
+        <label>ユーザーID</label>
         <div><input type="text" style="width:200px" required/></div>
     </div>
     <div>

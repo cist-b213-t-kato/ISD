@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Etude
  */
 @WebServlet(urlPatterns = {"/lecfinal/Index"})
-public class IndexServlet extends HttpServletEx {
+public class IndexServlet extends AbstractSignedHttpServlet {
     @Override
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
