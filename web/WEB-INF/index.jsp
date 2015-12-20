@@ -15,7 +15,7 @@
 </head>
 <body>
     
-    <span>製品Ａ テスト項目</span>
+    <label>製品Ａ テスト項目</label>
     <table id="testItemTable" width="500px">
         <tr>
             <th width="50px">番号</th>
@@ -43,8 +43,8 @@
         </tr>
     </table>
     
-    <form>
-    <table border="0">
+    <form method="POST">
+    <table border="0" width="500px">
         <tr>
             <td align="right">種別</td>
             <td>
@@ -56,14 +56,14 @@
         </tr>
         <tr>
             <td align="right">実行ステップ</td>
-            <td><textarea name="step" cols="20" rows="1"/></textarea></td>
+            <td><textarea name="step" rows="1" style="width:100%"/></textarea></td>
         </tr>
         <tr>
             <td align="right">期待される出力</td>
-            <td><textarea name="expectedResult" cols="20" rows="1"></textarea></td>
+            <td><textarea name="expectedResult" rows="1" style="width:100%"></textarea></td>
         </tr>
     </table>
-    <input style="width:80px" type="submit" value="追加する"/>
+    <input style="width:80px; text-align:center;" type="submit" value="追加する"/>
     </form>
     
     <a href="./testItemPage.jsp">ｺﾛｼｱｴｰ</a>

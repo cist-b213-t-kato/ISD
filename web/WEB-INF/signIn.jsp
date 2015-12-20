@@ -14,14 +14,14 @@
 </head>
 <body>
     <h1>Sign in</h1>
-    <form action="./index.jsp" method="POST">
+    <form action="./Index" method="POST">
     <div>
         <label>ユーザID</label>
-        <div><input style="width:200px" required/></div>
+        <div><input type="text" style="width:200px" required/></div>
     </div>
     <div>
         <label>パスワード</label>
-        <div><input style="width:200px" required/></div>
+        <div><input type="password" style="width:200px" required/></div>
     </div>
     <div style="margin: 20px auto;">
         <input type="submit" style="width:200px" value="ログイン"/>

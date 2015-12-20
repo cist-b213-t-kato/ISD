@@ -56,11 +56,11 @@ public final class signIn_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <form action=\"./index.jsp\" method=\"POST\">\n");
       out.write("    <div>\n");
       out.write("        <label>ユーザID</label>\n");
-      out.write("        <div><input style=\"width:200px\"/></div>\n");
+      out.write("        <div><input type=\"text\" style=\"width:200px\" required/></div>\n");
       out.write("    </div>\n");
       out.write("    <div>\n");
       out.write("        <label>パスワード</label>\n");
-      out.write("        <div><input style=\"width:200px\"/></div>\n");
+      out.write("        <div><input type=\"password\" style=\"width:200px\" required/></div>\n");
       out.write("    </div>\n");
       out.write("    <div style=\"margin: 20px auto;\">\n");
       out.write("        <input type=\"submit\" style=\"width:200px\" value=\"ログイン\"/>\n");
