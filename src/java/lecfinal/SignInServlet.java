@@ -6,7 +6,6 @@
 package lecfinal;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,12 +19,23 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/lecfinal/SignIn"})
 public class SignInServlet extends HttpServlet{
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher rd;
+        rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
         rd.forward(req, resp);
-        
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //TODO サインイン機能を完成させる
+        boolean isSignInSuceed = false;
+        if(isSignInSuceed == false){
+            resp.sendRedirect("./SignIn");
+        }else{
+            resp.sendRedirect("./Index");
+        }
     }
     
 }

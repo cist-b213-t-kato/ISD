@@ -19,11 +19,15 @@ import javax.servlet.http.HttpServletResponse;
  * @author Etude
  */
 @WebServlet(urlPatterns = {"/lecfinal/Index"})
-public class IndexServlet extends HttpServlet {
+public class IndexServlet extends HttpServletEx {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/index.jsp");
-        rd.forward(req, resp);
+    protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        //リダイレクト
+        resp.sendRedirect("./SignIn");
+        
+//        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/index.jsp");
+//        rd.forward(req, resp);
     }
+    
 }

@@ -14,7 +14,7 @@
 </head>
 <body>
     <h1>Sign in</h1>
-    <form action="./Index" method="POST">
+    <form action="./SignIn" method="POST">
     <div>
         <label>ユーザID</label>
         <div><input type="text" style="width:200px" required/></div>
