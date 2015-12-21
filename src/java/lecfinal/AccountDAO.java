@@ -17,9 +17,9 @@ import java.util.List;
  *
  * @author Etude
  */
-public class DAO {
+public class AccountDAO {
     
-    public DAO() throws ClassNotFoundException{
+    public AccountDAO() throws ClassNotFoundException{
         Class.forName("org.apache.derby.jdbc.ClientDriver");
     }
     
@@ -28,7 +28,6 @@ public class DAO {
         String sql = "select * from account where account_id='"+id+"' and passphrase='"+pass+"'";//"select * from account";
         List<Account> accounts = new ArrayList<>();
         //スタブとするなら
-//        messages.add("今日もイイ天気");
 //        accounts.add(new Account("","","ももも"));
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
@@ -41,7 +40,6 @@ public class DAO {
                 }
             }
         }
-//        return accounts.get(0);
         return null;
     }
     

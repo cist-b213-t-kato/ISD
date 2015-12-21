@@ -44,7 +44,7 @@ public class SignUpServlet extends HttpServlet{
         
         //TODO サインアップ機能を完成させる
         try {
-            DAO dao = new DAO();
+            AccountDAO dao = new AccountDAO();
             Account account = new Account(newUserId, newPassphrase, newAccountName);
             int returning = dao.insertAccount(account);
             

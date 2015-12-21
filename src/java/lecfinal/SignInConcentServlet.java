@@ -31,7 +31,7 @@ public class SignInConcentServlet extends HttpServlet{
         String id = req.getParameter("userId");
         String pass = req.getParameter("passphrase");
         
-        DAO dao = new DAO();
+        AccountDAO dao = new AccountDAO();
         
         Account account = dao.selectAccount(id, pass);//new Account("","","ももも");
         
