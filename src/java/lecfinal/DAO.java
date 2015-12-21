@@ -52,7 +52,7 @@ public class DAO {
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
                 stmt.setString(1, insertObject.getUserid());
                 stmt.setString(2, insertObject.getPassword());
-                stmt.setString(3, insertObject.getUserName());
+                stmt.setString(3, insertObject.getAccountName());
                 returning = stmt.executeUpdate();
             }
         }

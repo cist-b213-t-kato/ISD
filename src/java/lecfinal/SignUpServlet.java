@@ -34,6 +34,7 @@ public class SignUpServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         //TODO 新規ユーザー登録機能を完成させる
         boolean isSignUpSuceed = false;
         

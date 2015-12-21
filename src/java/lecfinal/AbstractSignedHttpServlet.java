@@ -36,7 +36,7 @@ public abstract class AbstractSignedHttpServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     * HttpServletExを継承するものは、自動的にサインインのページへ移動させる
+     * AbstractSignedHttpServletを継承するものは、自動的にサインインのページへ移動させる
      *
      * @param req servlet req
      * @param resp servlet resp

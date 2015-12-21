@@ -38,7 +38,7 @@ public class SignInConcentServlet extends HttpServlet{
         if(null!=account){
             HttpSession session = req.getSession();
             session.setAttribute("account", account);
-            session.setAttribute("account_name", account.getUserName());
+            session.setAttribute("account_name", account.getAccountName());
             resp.sendRedirect("./Index");
         }else{
             HttpSession session = req.getSession();

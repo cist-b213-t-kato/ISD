@@ -13,12 +13,12 @@ public class Account {
 
     private String accountId;
     private String passphrase;
-    private String userName;
+    private String accountName;
 
     public Account(String userId, String passphrase, String userName) {
         this.accountId = userId;
         this.passphrase = passphrase;
-        this.userName = userName;
+        this.accountName = userName;
     }
 
     public String getUserid() {
@@ -37,11 +37,11 @@ public class Account {
         passphrase = pw;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getAccountName() {
+        return accountName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAccountName(String userName) {
+        this.accountName = userName;
     }
 }

@@ -4,6 +4,7 @@
     Author     : Etude
 --%>
 
+<%@page import="lecfinal.Account"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,14 +14,14 @@
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/default.css"/>
 </head>
 <body>
-    <form action="./SignOut" method="POST">
-    <jsp:useBean id="account_name" class="String" scope="session"/>
-    <label>
-        <%=account_name%>
-    </label>
-    <span style="margin: 20px auto;">
-        <input type="submit" style="width:200px" value="サインアウト"/>
+    <span style="text-align:right; background-color:#808080">
+        <form action="./SignOut" method="POST">
+            <jsp:useBean id="account" class="Account" scope="session"/>
+            <span>
+                ユーザー名: <%=account.getAccountName()%>
+            </span>
+            <input type="submit" style="width:100px" value="サインアウト"/>
+        </form>
     </span>
-    </form>
 </body>
 </html>
