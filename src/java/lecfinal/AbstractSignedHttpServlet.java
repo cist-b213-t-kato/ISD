@@ -32,28 +32,28 @@ public abstract class AbstractSignedHttpServlet extends HttpServlet {
      */
     protected abstract void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException;
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      * HttpServletExを継承するものは、自動的にサインインのページへ移動させる
      *
-     * @param request servlet request
-     * @param response servlet response
+     * @param req servlet req
+     * @param resp servlet resp
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected final void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected final void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-//        HttpSession session = request.getSession();
-//        AccountBean account = (AccountBean) session.getAttribute("account");
-//        RequestDispatcher rd;
-//        if(null==account){
-//            rd = request.getRequestDispatcher("/WEB-INF/signIn.jsp");
-//            rd.forward(request, response);            
-//        }
-        processRequest(request, response);
+        HttpSession session = req.getSession();
+        Account account = (Account) session.getAttribute("account");
+        RequestDispatcher rd;
+        if(null==account){
+            rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
+            rd.forward(req, resp);            
+        }
+        processRequest(req, resp);
     }
 
     /**
@@ -67,16 +67,13 @@ public abstract class AbstractSignedHttpServlet extends HttpServlet {
     @Override
     protected final void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-//        HttpSession session = req.getSession();
-//        AccountBean account = (AccountBean) session.getAttribute("account");
-//        RequestDispatcher rd;
-//        if(null==account){
-//            rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
-//            rd.forward(req, resp);
-//        }
-//        
-//        req.getParameter("");
-        
+        HttpSession session = req.getSession();
+        Account account = (Account) session.getAttribute("account");
+        RequestDispatcher rd;
+        if(null==account){
+            rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
+            rd.forward(req, resp);            
+        }
         processRequest(req, resp);
     }
 

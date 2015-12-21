@@ -54,7 +54,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"http://localhost:8080/isd2015/default.css\"/>\n");
       out.write("</head>\n");
       out.write("<body>\n");
-      out.write("    \n");
+      out.write("    ");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "./header.jsp", out, false);
+      out.write("\n");
       out.write("    <label>製品Ａ テスト項目</label>\n");
       out.write("    <table id=\"testItemTable\" width=\"500px\">\n");
       out.write("        <tr>\n");

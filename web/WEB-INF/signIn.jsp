@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/default.css"/>
 </head>
 <body>
-    <h1>Sign In</h1>
+    <h1>サインイン</h1>
     <form action="./SignInConcent" method="POST">
     <div>
         <label>ユーザーID</label>

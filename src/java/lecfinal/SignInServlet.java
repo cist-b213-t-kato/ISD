@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/lecfinal/SignIn"})
 public class SignInServlet extends HttpServlet{
     
-    
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException, ClassNotFoundException, SQLException{
         RequestDispatcher rd;
@@ -42,15 +41,6 @@ public class SignInServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        //TODO サインイン機能を完成させる
-//        
-//        boolean isSignInSuceed = true;        
-//        if(isSignInSuceed){
-//            resp.sendRedirect("./SignInConcent");
-//        }else{
-//            resp.sendRedirect("./SignIn");
-//        }
         try {
             processRequest(req, resp);
         } catch (ClassNotFoundException | SQLException ex) {

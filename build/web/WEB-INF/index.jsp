@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/default.css"/>
 </head>
 <body>
-    
+    <jsp:include page="./header.jsp"/>
     <label>製品Ａ テスト項目</label>
     <table id="testItemTable" width="500px">
         <tr>
@@ -65,7 +65,5 @@
     </table>
     <input style="width:80px; text-align:center;" type="submit" value="追加する"/>
     </form>
-    
-    <a href="./testItemPage.jsp">ｺﾛｼｱｴｰ</a>
 </body>
 </html>

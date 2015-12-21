@@ -25,7 +25,7 @@ public class DAO {
     
     public Account selectAccount(String id, String pass) throws SQLException{
         
-        String sql = "select * from account where user_id='"+id+"' and passphrase='"+pass+"'";//"select * from account";
+        String sql = "select * from account where account_id='"+id+"' and passphrase='"+pass+"'";//"select * from account";
         List<Account> accounts = new ArrayList<>();
         //スタブとするなら
 //        messages.add("今日もイイ天気");
@@ -46,7 +46,7 @@ public class DAO {
     }
     
     public int insertAccount(Account insertObject) throws SQLException{
-        String sql = "insert into account(user_id, passphrase, account_name) values (?, ?, ?)";
+        String sql = "insert into account(account_id, passphrase, account_name) values (?, ?, ?)";
         int returning = 0;
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){

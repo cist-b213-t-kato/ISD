@@ -21,32 +21,14 @@ import javax.servlet.http.HttpSession;
  *
  * @author b2130480
  */
-@WebServlet(urlPatterns = {"/lecfinal/SignInConcent"})
-public class SignInConcentServlet extends HttpServlet{
+@WebServlet(urlPatterns = {"/lecfinal/SignOut"})
+public class SignOutServlet extends HttpServlet{
     
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException, ClassNotFoundException, SQLException{
-        //TODO サインイン機能を完成させる
-       
-        String id = req.getParameter("userId");
-        String pass = req.getParameter("passphrase");
-        
-        DAO dao = new DAO();
-        
-        Account account = dao.selectAccount(id, pass);//new Account("","","ももも");
-        
-        if(null!=account){
-            HttpSession session = req.getSession();
-            session.setAttribute("account", account);
-            session.setAttribute("account_name", account.getUserName());
-            resp.sendRedirect("./Index");
-        }else{
-            HttpSession session = req.getSession();
-            session.setAttribute("systemMessage", "<p>サインインできませんでした</p>");
-            RequestDispatcher rd;
-            rd = req.getRequestDispatcher("/WEB-INF/systemMessage.jsp");
-            rd.forward(req, resp);
-        }
+        HttpSession session = req.getSession();
+        session.setAttribute("account", null);
+        resp.sendRedirect("./SignIn");
     }
 
     @Override
@@ -54,7 +36,7 @@ public class SignInConcentServlet extends HttpServlet{
         try {
             processRequest(req,resp);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(SignInConcentServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignOutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -63,7 +45,7 @@ public class SignInConcentServlet extends HttpServlet{
         try {
             processRequest(req,resp);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(SignInConcentServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignOutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

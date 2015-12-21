@@ -11,18 +11,18 @@ package lecfinal;
  */
 public class Account {
 
-    private String userId;
+    private String accountId;
     private String passphrase;
     private String userName;
 
     public Account(String userId, String passphrase, String userName) {
-        this.userId = userId;
+        this.accountId = userId;
         this.passphrase = passphrase;
         this.userName = userName;
     }
 
     public String getUserid() {
-        return userId;
+        return accountId;
     }
 
     public String getPassword() {
@@ -30,7 +30,7 @@ public class Account {
     }
 
     public void setUserid(String id) {
-        userId = id;
+        accountId = id;
     }
 
     public void setPassword(String pw) {
