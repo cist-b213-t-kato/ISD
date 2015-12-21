@@ -52,7 +52,20 @@ public final class signIn_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"http://localhost:8080/isd2015/default.css\"/>\n");
       out.write("</head>\n");
       out.write("<body>\n");
-      out.write("    <h1>Hello World!</h1>\n");
+      out.write("    <h1>Sign In</h1>\n");
+      out.write("    <form action=\"./SignInConcent\" method=\"POST\">\n");
+      out.write("    <div>\n");
+      out.write("        <label>ユーザーID</label>\n");
+      out.write("        <div><input type=\"text\" style=\"width:200px\" name=\"userId\" required/></div>\n");
+      out.write("    </div>\n");
+      out.write("    <div>\n");
+      out.write("        <label>パスワード</label>\n");
+      out.write("        <div><input type=\"password\" style=\"width:200px\" name=\"passphrase\" required/></div>\n");
+      out.write("    </div>\n");
+      out.write("    <div style=\"margin: 20px auto;\">\n");
+      out.write("        <input type=\"submit\" style=\"width:200px\" value=\"ログイン\"/>\n");
+      out.write("    </div>\n");
+      out.write("    </form>\n");
       out.write("</body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

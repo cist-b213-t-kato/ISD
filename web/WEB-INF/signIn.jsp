@@ -14,14 +14,14 @@
 </head>
 <body>
     <h1>Sign In</h1>
-    <form action="./SignIn" method="POST">
+    <form action="./SignInConcent" method="POST">
     <div>
         <label>ユーザーID</label>
-        <div><input type="text" style="width:200px" required/></div>
+        <div><input type="text" style="width:200px" name="userId" required/></div>
     </div>
     <div>
         <label>パスワード</label>
-        <div><input type="password" style="width:200px" required/></div>
+        <div><input type="password" style="width:200px" name="passphrase" required/></div>
     </div>
     <div style="margin: 20px auto;">
         <input type="submit" style="width:200px" value="ログイン"/>

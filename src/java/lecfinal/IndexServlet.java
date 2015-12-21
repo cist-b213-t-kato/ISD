@@ -24,10 +24,10 @@ public class IndexServlet extends AbstractSignedHttpServlet {
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         //リダイレクト
-        resp.sendRedirect("./SignIn");
+//        resp.sendRedirect("./SignIn");
         
-//        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/index.jsp");
-//        rd.forward(req, resp);
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/index.jsp");
+        rd.forward(req, resp);
     }
     
 }

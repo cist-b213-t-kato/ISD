@@ -8,7 +8,10 @@ package lecfinal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,6 +21,28 @@ public class DAO {
     
     public DAO() throws ClassNotFoundException{
         Class.forName("org.apache.derby.jdbc.ClientDriver");
+    }
+    
+    public Account selectAccount(String id, String pass) throws SQLException{
+        
+        String sql = "select * from account where user_id='"+id+"' and passphrase='"+pass+"'";//"select * from account";
+        List<Account> accounts = new ArrayList<>();
+        //スタブとするなら
+//        messages.add("今日もイイ天気");
+//        accounts.add(new Account("","","ももも"));
+        try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
+            try(PreparedStatement stmt = conn.prepareStatement(sql)){
+                ResultSet results = stmt.executeQuery();
+                while(results.next()){
+                    String name = results.getString("account_name");
+                    Account tmp = new Account(id,pass,name);
+                    accounts.add(tmp);
+                    return accounts.get(0);
+                }
+            }
+        }
+//        return accounts.get(0);
+        return null;
     }
     
     public int insertAccount(Account insertObject) throws SQLException{

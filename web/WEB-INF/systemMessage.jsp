@@ -13,10 +13,9 @@
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/default.css"/>
 </head>
 <body>
-    <h1>error</h1>
-    <jsp:useBean id="error" class="String" scope="session"/>
+    <jsp:useBean id="systemMessage" class="String" scope="session"/>
     <label>
-        <%=error%>
+        <%=systemMessage%>
     </label>
 </body>
 </html>

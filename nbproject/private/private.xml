@@ -3,8 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/index.jsp</file>
-            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/edit.css</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/DAO.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/SignUpView.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec09/ErrorView.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec09/ChatDAO.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/index.jsp</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/IndexServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec01/SubmitSprinterServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/AbstractSignedHttpServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec09/ChatController.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/SignInServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/error.jsp</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/DBSetting.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/signIn.jsp</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/default.css</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/signUp.jsp</file>
         </group>
     </open-files>
 </project-private>

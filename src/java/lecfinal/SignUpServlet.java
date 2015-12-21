@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  * @author b2130480
  */
 @WebServlet(urlPatterns = {"/lecfinal/SignUp"})
-public class SignUpView extends HttpServlet{
+public class SignUpServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,21 +47,20 @@ public class SignUpView extends HttpServlet{
             Account account = new Account(newUserId, newPassphrase, newAccountName);
             int returning = dao.insertAccount(account);
             
-            if(isSignUpSuceed == false){
+            if(returning>=1){
                 HttpSession session = req.getSession();
-                session.setAttribute("error", ""+returning);
+                session.setAttribute("systemMessage", "<h1>アカウントが追加できました</h1>"
+                        + "<a href=\"./SignIn\">サインインする</a>");
                 
                 RequestDispatcher rd;
-                rd = req.getRequestDispatcher("/WEB-INF/error.jsp");
+                rd = req.getRequestDispatcher("/WEB-INF/systemMessage.jsp");
                 rd.forward(req, resp);
-
-                resp.sendRedirect("../testItemPage.jsp");
             }else{
                 resp.sendRedirect("./SignIn");
             }
             
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(SignUpView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignUpServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
