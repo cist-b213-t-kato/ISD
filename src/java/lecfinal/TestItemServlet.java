@@ -25,6 +25,11 @@ public class TestItemServlet extends AbstractSignedHttpServlet {
         
 //        //リダイレクト
 //        resp.sendRedirect("./Index");
+
+//        resp.setHeader("Pragma", "no-cache");
+//        resp.setHeader("Cache-Control", "no-cache");
+//        resp.setDateHeader("Expires", 0);
+
         
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/testItem.jsp");
         rd.forward(req, resp);

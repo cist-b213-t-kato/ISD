@@ -21,6 +21,7 @@
             <span style="margin-right:15px"><a href="./TestItem">テスト項目ページ</a></span>
             <span style="margin-right:15px"><a href="./Product">製品ページ</a></span>
             <input type="submit" style="width:100px" value="サインアウト"/>
+            <!--<button onclick="location.replace('./SignOut');return false;">サインアウト</button>-->
         </form>
         <hr size="3" color="#CCCCCC"/>
     </span>

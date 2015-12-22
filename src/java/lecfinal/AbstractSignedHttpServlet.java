@@ -44,7 +44,7 @@ public abstract class AbstractSignedHttpServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected final void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         HttpSession session = req.getSession();
         Account account = (Account) session.getAttribute("account");
@@ -65,7 +65,7 @@ public abstract class AbstractSignedHttpServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected final void doPost(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         HttpSession session = req.getSession();
         Account account = (Account) session.getAttribute("account");

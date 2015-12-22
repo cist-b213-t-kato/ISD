@@ -31,9 +31,9 @@ public class SignInConcentServlet extends HttpServlet{
         String id = req.getParameter("userId");
         String pass = req.getParameter("passphrase");
         
-        AccountDAO dao = new AccountDAO();
+        AccountModel model = new AccountModel();
         
-        Account account = dao.selectAccount(id, pass);//new Account("","","ももも");
+        Account account = model.getAccount(id, pass);//new Account("","","ももも");
         
         if(null!=account){
             HttpSession session = req.getSession();

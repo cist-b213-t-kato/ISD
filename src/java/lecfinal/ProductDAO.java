@@ -24,9 +24,9 @@ public class ProductDAO {
     }
     
     
-    public List<Product> selectAccount() throws SQLException{
+    public List<Product> selectProducts() throws SQLException{
         
-        String sql = "select * from product";//"select * from account";
+        String sql = "select * from product order by product_id asc";//"select * from account";
         List<Product> products = new ArrayList<>();
         //スタブとするなら
 //        accounts.add(new Account("","","ももも"));
@@ -45,14 +45,13 @@ public class ProductDAO {
     }
     
     
-    public int insertProduct(Account insertObject) throws SQLException{
+    public int insertProduct(Product insertObject) throws SQLException{
         String sql = "insert into product(product_id, product_name) values (?, ?)";
         int returning = 0;
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
-                stmt.setString(1, insertObject.getUserid());
-                stmt.setString(2, insertObject.getPassword());
-                stmt.setString(3, insertObject.getAccountName());
+                stmt.setInt(1, insertObject.getProductId());
+                stmt.setString(2, insertObject.getProductName());
                 returning = stmt.executeUpdate();
             }
         }

@@ -35,33 +35,35 @@ public class SignUpServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        //TODO 新規ユーザー登録機能を完成させる
-        boolean isSignUpSuceed = false;
-        
+
         String newUserId = req.getParameter("newUserId");
         String newPassphrase = req.getParameter("newPassphrase");
         String newAccountName = req.getParameter("newAccountName");
         
         //TODO サインアップ機能を完成させる
         try {
-            AccountDAO dao = new AccountDAO();
+            AccountModel model = new AccountModel();
             Account account = new Account(newUserId, newPassphrase, newAccountName);
-            int returning = dao.insertAccount(account);
+            model.submitAccount(account);
             
-            if(returning>=1){
-                HttpSession session = req.getSession();
-                session.setAttribute("systemMessage", "<h1>アカウントが追加できました</h1>"
-                        + "<a href=\"./SignIn\">サインインする</a>");
-                
-                RequestDispatcher rd;
-                rd = req.getRequestDispatcher("/WEB-INF/systemMessage.jsp");
-                rd.forward(req, resp);
-            }else{
-                resp.sendRedirect("./SignIn");
-            }
+            HttpSession session = req.getSession();
+            session.setAttribute("systemMessage", "<h1>アカウントが追加できました</h1>"
+                    + "<a href=\"./SignIn\">サインインする</a>");
+
+            RequestDispatcher rd;
+            rd = req.getRequestDispatcher("/WEB-INF/systemMessage.jsp");
+            rd.forward(req, resp);
             
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(SignUpServlet.class.getName()).log(Level.SEVERE, null, ex);
+            
+            HttpSession session = req.getSession();
+            session.setAttribute("systemMessage", "<p>アカウントが追加できませんでした</p>"
+                    + "<a href=\"./SignIn\">サインインする</a>");
+
+            RequestDispatcher rd;
+            rd = req.getRequestDispatcher("/WEB-INF/systemMessage.jsp");
+            rd.forward(req, resp);
         }
         
         
