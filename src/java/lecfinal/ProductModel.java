@@ -7,6 +7,8 @@ package lecfinal;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,14 +16,24 @@ import java.util.List;
  */
 public class ProductModel {
     
-    public int submitProduct(Product insertObject) throws ClassNotFoundException, SQLException{
-        ProductDAO dao = new ProductDAO();
-        return dao.insertProduct(insertObject);
+    public int submitProduct(Product insertObject){
+        try {
+            ProductDAO dao = new ProductDAO();
+            return dao.insertProduct(insertObject);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProductModel.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
     }
     
-    public List<Product> getProducts() throws ClassNotFoundException, SQLException{
-        ProductDAO dao = new ProductDAO();
-        return dao.selectProducts();
+    public List<Product> getProducts(){
+        try {
+            ProductDAO dao = new ProductDAO();
+            return dao.selectProducts();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProductModel.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
     
 }

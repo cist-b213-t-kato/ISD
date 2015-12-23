@@ -12,14 +12,28 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>JSP Page</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/default.css"/>
+    <style>
+        .scrollable{
+            display: block;
+            max-width: 100%;
+            overflow-x: auto;
+            table-layout: fixed;
+            height: 300px;
+        }
+        th, td {
+          white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
-    <!--TODO 戻す？-->
-    <%--<jsp:include page="./header.jsp"/>--%>
-    <label>製品Ａ テスト項目</label>
-    <table id="testItemTable" width="300px">
+    <jsp:include page="./header.jsp"/>
+    <label>製品一覧</label>
+    <table class="blueTable scrollable" style="width:300px;">
         <tr>
             <th width="50px">番号</th>
             <th width="200px">製品名</th>

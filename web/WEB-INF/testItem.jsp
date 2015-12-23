@@ -10,13 +10,20 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="ja" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=480px, initial-scale=1.0">
     <title>JSP Page</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/default.css"/>
 </head>
 <body>
     <jsp:include page="./header.jsp"/>
     <label>製品Ａ テスト項目</label>
-    <table id="testItemTable" width="500px">
+    <table class="blueTable" width="500px">
         <tr>
             <th width="50px">番号</th>
             <th width="70px">種別</th>
@@ -43,12 +50,12 @@
         </tr>
     </table>
     
-    <form method="POST">
+    <form action="./TestItem" method="POST">
     <table border="0" width="500px">
         <tr>
             <td align="right">種別</td>
             <td>
-                <select name="種別">
+                <select name="testType">
                     <option value="1">正常系</option>
                     <option value="2">異常系</option>
                 </select>
@@ -56,7 +63,7 @@
         </tr>
         <tr>
             <td align="right">実行ステップ</td>
-            <td><textarea name="step" rows="1" style="width:100%"/></textarea></td>
+            <td><textarea name="testStep" rows="1" style="width:100%"/></textarea></td>
         </tr>
         <tr>
             <td align="right">期待される出力</td>

@@ -20,20 +20,20 @@ textarea{
 }
 
 
-#testItemTable{
+.blueTable{
     background-color: #FFFFFF;
     margin-bottom: 10px;
     border-collapse: collapse;
     border: 1px #606060 solid;
 }
 
-#testItemTable th{
+.blueTable th{
     color: #FFFFFF;
     background-color: #5080E0;
     border: 1px #606060 solid;
     /*border-color: #FFFFFF;*/
 }
-#testItemTable td{
+.blueTable td{
     border: 1px #606060 solid;
 }
 

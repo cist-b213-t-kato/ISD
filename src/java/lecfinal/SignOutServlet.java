@@ -24,29 +24,24 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/lecfinal/SignOut"})
 public class SignOutServlet extends HttpServlet{
     
-    protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException, ClassNotFoundException, SQLException{
+    protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         HttpSession session = req.getSession();
-        session.setAttribute("account", null);
-        resp.sendRedirect("./SignIn");
+        if(session.getAttribute("account")!=null){
+            session.setAttribute("account", null);
+        }
+        RequestDispatcher rd;
+        rd = req.getRequestDispatcher("/WEB-INF/signOut.jsp");
+        rd.forward(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            processRequest(req,resp);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(SignOutServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            processRequest(req,resp);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(SignOutServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(req,resp);
     }
     
 }

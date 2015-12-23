@@ -30,6 +30,12 @@ public class TestItemServlet extends AbstractSignedHttpServlet {
 //        resp.setHeader("Cache-Control", "no-cache");
 //        resp.setDateHeader("Expires", 0);
 
+        if("POST".equals(req.getMethod())){
+            String testType = req.getParameter("testType");
+            String testStep = req.getParameter("testStep");
+            String expectedResult = req.getParameter("expectedResult");
+            
+        }
         
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/testItem.jsp");
         rd.forward(req, resp);

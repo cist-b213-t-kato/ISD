@@ -23,8 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/lecfinal/SignIn"})
 public class SignInServlet extends HttpServlet{
     
-    protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException, ClassNotFoundException, SQLException{
+    protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
         RequestDispatcher rd;
         rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
         rd.forward(req, resp);
@@ -32,20 +31,11 @@ public class SignInServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            processRequest(req, resp);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(SignInServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            processRequest(req, resp);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(SignInServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        processRequest(req, resp);
     }
 }

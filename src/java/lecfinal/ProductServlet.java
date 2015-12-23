@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,31 +29,28 @@ public class ProductServlet extends AbstractSignedHttpServlet {
         
 //        //リダイレクト
 //        resp.sendRedirect("./Index");
-        
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/product.jsp");
-        rd.forward(req, resp);
-    }
-    
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        resp.setHeader("Pragma","no-cache");
+//        resp.setHeader("Cache-Control","no-cache");
+//        resp.setDateHeader("Expires",0);
+
         req.setCharacterEncoding("utf-8");
-        //TODO DB追加
-        try {
+        if("POST".equals(req.getMethod())){
             String idStr = req.getParameter("product_id");
             String name = req.getParameter("product_name");
             int id = Integer.parseInt(idStr);
             Product insertObject = new Product(id, name);
             ProductModel model = new ProductModel();
             model.submitProduct(insertObject);
-            processRequest(req, resp);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        HttpSession session = req.getSession();
+        if(session.getAttribute("account")==null){
+            resp.sendRedirect("./SignIn");
+        }
+        
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/product.jsp");
+        rd.forward(req, resp);
     }
     
 }
