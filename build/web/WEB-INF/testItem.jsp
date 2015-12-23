@@ -4,6 +4,8 @@
     Author     : Etude
 --%>
 
+<%@page import="lecfinal.TestItemBean"%>
+<%@page import="lecfinal.TestItemModel"%>
 <%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,7 +32,17 @@
             <th width="200px">実行ステップ</th>
             <th width="150px">期待される出力</th>
         </tr>
+        <%
+            TestItemModel model = new TestItemModel();
+            for(TestItemBean testItem : model.getTestItemList()){
+        %>
         <tr>
+            <td><%=testItem.getTestId()%></td>
+            <td><%=testItem.getTestType()%></td>
+            <td><%=testItem.getTestStep()%></td>
+            <td><%=testItem.getExpectedResult()%></td>
+        </tr>
+<!--        <tr>
             <td>1</td>
             <td>正常系</td>
             <td>1.「出席を提出する」ボタンをクリックする</td>
@@ -47,7 +59,10 @@
             <td>異常系</td>
             <td>1.「出席を提出する」 ボタンをクリックする</td>
             <td>入力フォームが表示される</td>
-        </tr>
+        </tr>-->
+        <%
+            }
+        %>
     </table>
     
     <form action="./TestItem" method="POST">
