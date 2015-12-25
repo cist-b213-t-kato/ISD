@@ -16,13 +16,23 @@ import java.util.logging.Logger;
  */
 public class TestItemModel {
     
-    public List<TestItemBean> getTestItemList(){
+    public List<TestItemBean> getTestItemListByProductId(int productId){
         try {
             TestItemDAO dao = new TestItemDAO();
-            return dao.selectTestItemList();
+            return dao.selectTestItemListByProductId(productId);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProductModel.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+
+    public int submitTestItem(TestItemBean insertObject){
+        try {
+            TestItemDAO dao = new TestItemDAO();
+            return dao.insertTestItem(insertObject);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TestItemModel.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
         }
     }
     

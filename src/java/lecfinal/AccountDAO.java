@@ -25,14 +25,16 @@ public class AccountDAO {
     
     public Account selectAccount(String id, String pass) throws SQLException{
         
-        String sql = "select * from account where account_id='"+id+"' and passphrase='"+pass+"'";//"select * from account";
+        String sql = "select * from account where account_id = ? and passphrase = ?";//"select * from account";
         List<Account> accounts = new ArrayList<>();
         //スタブとするなら
 //        accounts.add(new Account("","","ももも"));
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
+                stmt.setString(1, id);
+                stmt.setString(2, pass);
                 ResultSet results = stmt.executeQuery();
-                while(results.next()){
+                if(results.next()){
                     String name = results.getString("account_name");
                     Account tmp = new Account(id,pass,name);
                     accounts.add(tmp);
@@ -48,7 +50,7 @@ public class AccountDAO {
         int returning = 0;
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
-                stmt.setString(1, insertObject.getUserid());
+                stmt.setString(1, insertObject.getAccountId());
                 stmt.setString(2, insertObject.getPassword());
                 stmt.setString(3, insertObject.getAccountName());
                 returning = stmt.executeUpdate();

@@ -21,7 +21,7 @@ public class Account {
         this.accountName = userName;
     }
 
-    public String getUserid() {
+    public String getAccountId() {
         return accountId;
     }
 
@@ -29,7 +29,7 @@ public class Account {
         return passphrase;
     }
 
-    public void setUserid(String id) {
+    public void setAccountId(String id) {
         accountId = id;
     }
 

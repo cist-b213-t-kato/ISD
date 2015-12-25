@@ -6,13 +6,12 @@
 package lecfinal;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,15 +25,24 @@ public class TestItemServlet extends AbstractSignedHttpServlet {
 //        //リダイレクト
 //        resp.sendRedirect("./Index");
 
-//        resp.setHeader("Pragma", "no-cache");
-//        resp.setHeader("Cache-Control", "no-cache");
-//        resp.setDateHeader("Expires", 0);
+//        resp.setHeader("Pragma","no-cache");
+//        resp.setHeader("Cache-Control","no-cache");
+//        resp.setDateHeader("Expires",0);
 
+        req.setCharacterEncoding("utf-8");
         if("POST".equals(req.getMethod())){
-            String testType = req.getParameter("testType");
-            String testStep = req.getParameter("testStep");
-            String expectedResult = req.getParameter("expectedResult");
-            
+            int id = Integer.parseInt(req.getParameter("product_id"));
+            ProductModel model = new ProductModel();
+            Product product = model.getProduct(id);
+            HttpSession session = req.getSession();
+            session.setAttribute("product", product);
+            resp.sendRedirect("./TestItemEdit");
+            return;
+        }
+
+        HttpSession session = req.getSession();
+        if(session.getAttribute("account")==null){
+            resp.sendRedirect("./SignIn");
         }
         
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/testItem.jsp");

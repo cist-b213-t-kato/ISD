@@ -36,4 +36,14 @@ public class ProductModel {
         }
     }
     
+    public Product getProduct(int id){
+        try {
+            ProductDAO dao = new ProductDAO();
+            return dao.selectProduct(id);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ProductModel.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
 }

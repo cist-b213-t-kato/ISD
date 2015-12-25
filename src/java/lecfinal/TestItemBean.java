@@ -13,6 +13,7 @@ import java.sql.Date;
  */
 public class TestItemBean {
     private int testId;
+    private int testNumber;
     private int productId; 
     private String accountId;
     private int testType;
@@ -22,8 +23,9 @@ public class TestItemBean {
     private int testResult;
     private String remarks;
 
-    public TestItemBean(int testId, int productId, String accountId, int testType, String testStep, String expectedResult, Date testDate, int testResult, String remarks) {
+    public TestItemBean(int testId, int testNumber, int productId, String accountId, int testType, String testStep, String expectedResult, Date testDate, int testResult, String remarks) {
         this.testId = testId;
+        this.testNumber = testNumber;        
         this.productId = productId;
         this.accountId = accountId;
         this.testType = testType;
@@ -104,6 +106,14 @@ public class TestItemBean {
 
     public void setTestId(int testId) {
         this.testId = testId;
+    }
+
+    public int getTestNumber() {
+        return testNumber;
+    }
+
+    public void setTestNumber(int testNumber) {
+        this.testNumber = testNumber;
     }
 
     

@@ -21,7 +21,7 @@
 </head>
 <body>
     <jsp:include page="./header.jsp"/>
-    <a href="./TestItem">テスト項目ページ</a><br/>
-    <a href="./Product">製品ページ</a><br/>
+    <a href="./TestItem">テスト項目編集ページ</a><br/>
+    <a href="./Product">製品編集ページ</a><br/>
 </body>
 </html>

@@ -23,13 +23,26 @@ public class ProductDAO {
         Class.forName("org.apache.derby.jdbc.ClientDriver");
     }
     
+    public Product selectProduct(int id) throws SQLException{
+        
+        String sql = "select * from product where product_id = " + id + "";
+        Product returning = null;
+        try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
+            try(PreparedStatement stmt = conn.prepareStatement(sql)){
+                ResultSet results = stmt.executeQuery();
+                if(results.next()){
+                    String name = results.getString("product_name");
+                    returning = new Product(id, name);
+                }
+            }
+            return returning;
+        }
+    }
     
     public List<Product> selectProducts() throws SQLException{
         
         String sql = "select * from product order by product_id asc";//"select * from account";
         List<Product> products = new ArrayList<>();
-        //スタブとするなら
-//        accounts.add(new Account("","","ももも"));
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
                 ResultSet results = stmt.executeQuery();
