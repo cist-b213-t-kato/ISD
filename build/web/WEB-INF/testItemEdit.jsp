@@ -4,6 +4,7 @@
     Author     : Etude
 --%>
 
+<%@page import="lecfinal.TestTypeDefinition"%>
 <%@page import="lecfinal.Product"%>
 <%@page import="lecfinal.TestItemBean"%>
 <%@page import="lecfinal.TestItemModel"%>
@@ -28,7 +29,7 @@
     <%
         Product product = (Product)session.getAttribute("product");
     %>
-    <label>製品 <%=product.getProductName()%> のテスト項目を追加する</label>
+    <label>製品 <%=product.getProductName()%> のテスト項目</label>
     <table class="blueTable" width="500px">
         <tr>
             <th width="50px">番号</th>
@@ -43,7 +44,7 @@
         %>
         <tr>
             <td><%=testItem.getTestNumber()%></td>
-            <td><%=testItem.getTestType()%></td>
+            <td><%=TestTypeDefinition.toLabel(testItem.getTestType())%></td>
             <td><%=testItem.getTestStep()%></td>
             <td><%=testItem.getExpectedResult()%></td>
         </tr>
@@ -52,31 +53,9 @@
         %>
     </table>
     
-    <form action="./TestItemEdit" method="POST">
-    <table border="0" width="500px">
-        <tr>
-            <td align="right">テスト番号</td>
-            <td><input name="testNumber" rows="1" style="width:50%" required/></td>
-        </tr>
-        <tr>
-            <td align="right">種別</td>
-            <td>
-                <select name="testType">
-                    <option value="1">正常系</option>
-                    <option value="2">異常系</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td align="right">実行ステップ</td>
-            <td><textarea name="testStep" rows="1" style="width:100%"/></textarea></td>
-        </tr>
-        <tr>
-            <td align="right">期待される出力</td>
-            <td><textarea name="expectedResult" rows="1" style="width:100%"></textarea></td>
-        </tr>
-    </table>
-    <input style="width:80px; text-align:center;" type="submit" value="追加する"/>
-    </form>
+    <a href="./TestItemAddition">テスト項目の追加</a><br/>
+    <a href="./TestItemChange">テスト項目の変更</a><br/>
+    <a href="./TestItemDelete">テスト項目の削除</a><br/>
+    
 </body>
 </html>

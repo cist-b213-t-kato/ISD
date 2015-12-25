@@ -5,6 +5,7 @@
  */
 package lecfinal;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -35,5 +36,37 @@ public class TestItemModel {
             return 0;
         }
     }
+    
+    public int changeTestItem(TestItemBean updateObject){
+        try {
+            TestItemDAO dao = new TestItemDAO();
+            return dao.updateTestItem(updateObject);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TestItemModel.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+    
+    public int deleteTestItem(int testNumber, int productId) {
+        try {
+            TestItemDAO dao = new TestItemDAO();
+            return dao.deleteTestItem(testNumber, productId);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TestItemModel.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }        
+    }
+    
+    public static void main(String[] args){
+        TestItemModel model = new TestItemModel();
+        TestItemBean updateObject = new TestItemBean(
+                2, 1, 1, "b2130480",
+                1, "ｼﾝｸﾉｿﾗｰ", "ｺﾖｲﾉﾂｷﾉﾖﾆｰ",
+                new Date(0), 0, ""
+        );
+        model.changeTestItem(updateObject);
+        
+    }
+
     
 }

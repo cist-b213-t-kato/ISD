@@ -18,18 +18,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author Etude
  */
-@WebServlet(urlPatterns = {"/lecfinal/TestItemEdit"})
-public class TestItemEditServlet extends AbstractSignedHttpServlet {
+@WebServlet(urlPatterns = {"/lecfinal/TestItemChange"})
+public class TestItemChangeServlet extends AbstractSignedHttpServlet {
     @Override
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-//        //リダイレクト
-//        resp.sendRedirect("./Index");
-
-//        resp.setHeader("Pragma", "no-cache");
-//        resp.setHeader("Cache-Control", "no-cache");
-//        resp.setDateHeader("Expires", 0);
-
         req.setCharacterEncoding("utf-8");
         if("POST".equals(req.getMethod())){
             int testType = Integer.parseInt(req.getParameter("testType"));
@@ -39,16 +32,16 @@ public class TestItemEditServlet extends AbstractSignedHttpServlet {
             HttpSession session = req.getSession();
             Account account = (Account)session.getAttribute("account");
             Product product = (Product)session.getAttribute("product");
-            TestItemBean insertObject = new TestItemBean(
+            TestItemBean updateObject = new TestItemBean(
                     -1, testNumber, product.getProductId(), account.getAccountId(),
                     testType, testStep, expectedResult,
                     new Date(0), 0, ""
             );
             TestItemModel model = new TestItemModel();
-            model.submitTestItem(insertObject);
+            model.changeTestItem(updateObject);
         }
         
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/testItemEdit.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/testItemChange.jsp");
         rd.forward(req, resp);
     }
     

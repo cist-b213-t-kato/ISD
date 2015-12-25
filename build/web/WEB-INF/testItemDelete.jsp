@@ -29,7 +29,7 @@
     <%
         Product product = (Product)session.getAttribute("product");
     %>
-    <label>製品 <%=product.getProductName()%> のテスト項目</label>
+    <label>製品 <%=product.getProductName()%> のテスト項目を削除する</label>
     <table class="blueTable" width="500px">
         <tr>
             <th width="50px">番号</th>
@@ -53,9 +53,24 @@
         %>
     </table>
     
-    <a href="./TestItemAddition">テスト項目の追加</a><br/>
-    <a href="./TestItemChange">テスト項目の変更</a><br/>
-    <a href="./TestItemDelete">テスト項目の削除</a><br/>
-    
+    <form action="./TestItemDelete" method="POST">
+    <table border="0">
+        <tr>
+            <td align="right">テスト番号</td>
+            <td>
+                <select name="testNumber">
+                <%
+                    for(TestItemBean t : model.getTestItemListByProductId(id)){
+                %>
+                    <option value="<%=t.getTestNumber()%>"><%=t.getTestNumber()%></option>
+                <%
+                    }
+                %>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input style="width:80px; text-align:center;" type="submit" value="削除する"/>
+    </form>
 </body>
 </html>

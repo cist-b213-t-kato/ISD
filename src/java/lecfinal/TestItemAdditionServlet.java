@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Etude
  */
-@WebServlet(urlPatterns = {"/lecfinal/TestItemEdit"})
-public class TestItemEditServlet extends AbstractSignedHttpServlet {
+@WebServlet(urlPatterns = {"/lecfinal/TestItemAddition"})
+public class TestItemAdditionServlet extends AbstractSignedHttpServlet {
     @Override
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
@@ -48,7 +48,7 @@ public class TestItemEditServlet extends AbstractSignedHttpServlet {
             model.submitTestItem(insertObject);
         }
         
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/testItemEdit.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/testItemAddition.jsp");
         rd.forward(req, resp);
     }
     

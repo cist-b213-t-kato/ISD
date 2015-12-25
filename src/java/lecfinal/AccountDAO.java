@@ -25,10 +25,8 @@ public class AccountDAO {
     
     public Account selectAccount(String id, String pass) throws SQLException{
         
-        String sql = "select * from account where account_id = ? and passphrase = ?";//"select * from account";
+        String sql = "select * from account where account_id = ? and passphrase = ?";
         List<Account> accounts = new ArrayList<>();
-        //スタブとするなら
-//        accounts.add(new Account("","","ももも"));
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
                 stmt.setString(1, id);
@@ -36,9 +34,7 @@ public class AccountDAO {
                 ResultSet results = stmt.executeQuery();
                 if(results.next()){
                     String name = results.getString("account_name");
-                    Account tmp = new Account(id,pass,name);
-                    accounts.add(tmp);
-                    return accounts.get(0);
+                    return new Account(id,pass,name);
                 }
             }
         }

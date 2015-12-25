@@ -53,10 +53,11 @@ public class TestItemDAO {
     
     public List<TestItemBean> selectTestItemListByProductId(int productId) throws SQLException{
         
-        String sql = "select * from test_item where product_id = "+ productId +" order by test_id asc";//"select * from account";
+        String sql = "select * from test_item where product_id = ? order by test_number asc";
         List<TestItemBean> testItemList = new ArrayList<>();
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
+                stmt.setInt(1, productId);
                 ResultSet results = stmt.executeQuery();
                 while(results.next()){
                     int id = results.getInt("test_id");
@@ -77,9 +78,33 @@ public class TestItemDAO {
         }
     }
     
+    public int updateTestItem(TestItemBean updateObject) throws SQLException{
+        //TODO
+        String sql = "UPDATE TEST_ITEM SET "
+                + "TEST_NUMBER = ?, PRODUCT_ID = ?, ACCOUNT_ID = ?, "
+                + "TEST_TYPE = ?, TEST_STEP = ?, EXPECTED_RESULT = ?, TEST_DATE = ?, TEST_RESULT = ?, REMARKS = ? "
+                + "where test_number = ? and product_id = ?"; //11~
+
+        try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
+            try(PreparedStatement stmt = conn.prepareStatement(sql)){
+                stmt.setInt(1, updateObject.getTestNumber());
+                stmt.setInt(2, updateObject.getProductId());
+                stmt.setString(3, updateObject.getAccountId());
+                stmt.setInt(4, updateObject.getTestType());
+                stmt.setString(5, updateObject.getTestStep());
+                stmt.setString(6, updateObject.getExpectedResult());
+                stmt.setDate(7, updateObject.getTestDate());
+                stmt.setInt(8, updateObject.getTestResult());
+                stmt.setString(9, updateObject.getRemarks());
+                stmt.setInt(10, updateObject.getTestNumber());
+                stmt.setInt(11, updateObject.getProductId());
+                return stmt.executeUpdate();
+            }
+        }
+    }
+    
     
     public int insertTestItem(TestItemBean insertObject) throws SQLException{
-//        String sql = "insert into test_item values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         String sql = "INSERT INTO TEST_ITEM (TEST_ID, TEST_NUMBER, PRODUCT_ID, ACCOUNT_ID,"
                 + " TEST_TYPE, TEST_STEP, EXPECTED_RESULT, TEST_DATE, TEST_RESULT, REMARKS)"
                 + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -102,7 +127,7 @@ public class TestItemDAO {
     }
     
     private int getNextTestId() throws SQLException{
-        String sql = "SELECT MAX(TEST_NUMBER) FROM TEST_ITEM";
+        String sql = "SELECT MAX(TEST_ID) FROM TEST_ITEM";
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
                 ResultSet results = stmt.executeQuery();
@@ -116,6 +141,17 @@ public class TestItemDAO {
         TestItemDAO dao = new TestItemDAO();
         System.out.println(dao.getNextTestId());
     }
-    
+
+    public int deleteTestItem(int testNumber, int productId) throws SQLException {
+        String sql = "delete from test_item where test_number = ? and product_id = ?";
+        
+        try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
+            try(PreparedStatement stmt = conn.prepareStatement(sql)){
+                stmt.setInt(1, testNumber);
+                stmt.setInt(2, productId);
+                return stmt.executeUpdate();
+            }
+        }
+    }
     
 }

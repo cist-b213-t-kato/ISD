@@ -29,7 +29,7 @@
     <%
         Product product = (Product)session.getAttribute("product");
     %>
-    <label>製品 <%=product.getProductName()%> のテスト項目</label>
+    <label>製品 <%=product.getProductName()%> のテスト項目を変更する</label>
     <table class="blueTable" width="500px">
         <tr>
             <th width="50px">番号</th>
@@ -53,9 +53,47 @@
         %>
     </table>
     
-    <a href="./TestItemAddition">テスト項目の追加</a><br/>
-    <a href="./TestItemChange">テスト項目の変更</a><br/>
-    <a href="./TestItemDelete">テスト項目の削除</a><br/>
-    
+    <form action="./TestItemChange" method="POST">
+    <table border="0" width="500px">
+        <tr>
+            <td align="right">テスト番号</td>
+            <td>
+                <!--<input name="testNumber" rows="1" style="width:50%" required/>-->
+                <select name="testNumber">
+                <%
+                    for(TestItemBean t : model.getTestItemListByProductId(id)){
+                %>
+                    <option value="<%=t.getTestNumber()%>"><%=t.getTestNumber()%></option>
+                <%
+                    }
+                %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">種別</td>
+            <td>
+                <select name="testType">
+                <%
+                    for(TestTypeDefinition t : TestTypeDefinition.values()){
+                %>
+                    <option value="<%=t.getNum()%>"><%=t.getLabel()%></option>
+                <%
+                    }
+                %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">実行ステップ</td>
+            <td><textarea name="testStep" rows="1" style="width:100%"/></textarea></td>
+        </tr>
+        <tr>
+            <td align="right">期待される出力</td>
+            <td><textarea name="expectedResult" rows="1" style="width:100%"></textarea></td>
+        </tr>
+    </table>
+    <input style="width:80px; text-align:center;" type="submit" value="変更する"/>
+    </form>
 </body>
 </html>
