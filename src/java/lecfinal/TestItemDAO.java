@@ -126,7 +126,7 @@ public class TestItemDAO {
         }
     }
     
-    private int getNextTestId() throws SQLException{
+    public int getNextTestId() throws SQLException{
         String sql = "SELECT MAX(TEST_ID) FROM TEST_ITEM";
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
@@ -144,12 +144,23 @@ public class TestItemDAO {
 
     public int deleteTestItem(int testNumber, int productId) throws SQLException {
         String sql = "delete from test_item where test_number = ? and product_id = ?";
-        
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
                 stmt.setInt(1, testNumber);
                 stmt.setInt(2, productId);
                 return stmt.executeUpdate();
+            }
+        }
+    }
+    
+    public int getNextTestItemNumberByProductId(int productId) throws SQLException{
+        String sql = "SELECT MAX(test_number) FROM TEST_ITEM where product_id = ?";
+        try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
+            try(PreparedStatement stmt = conn.prepareStatement(sql)){
+                stmt.setInt(1, productId);
+                ResultSet results = stmt.executeQuery();
+                results.next();
+                return results.getInt(1)+1;
             }
         }
     }

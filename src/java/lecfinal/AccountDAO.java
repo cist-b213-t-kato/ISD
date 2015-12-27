@@ -26,7 +26,6 @@ public class AccountDAO {
     public Account selectAccount(String id, String pass) throws SQLException{
         
         String sql = "select * from account where account_id = ? and passphrase = ?";
-        List<Account> accounts = new ArrayList<>();
         try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
             try(PreparedStatement stmt = conn.prepareStatement(sql)){
                 stmt.setString(1, id);
@@ -39,6 +38,39 @@ public class AccountDAO {
             }
         }
         return null;
+    }
+    
+    public Account selectAccount(String id) throws SQLException{
+        String sql = "select * from account where account_id = ?";
+        try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
+            try(PreparedStatement stmt = conn.prepareStatement(sql)){
+                stmt.setString(1, id);
+                ResultSet results = stmt.executeQuery();
+                if(results.next()){
+                    String name = results.getString("account_name");
+                    String pass = results.getString("passphrase");
+                    return new Account(id,pass,name);
+                }
+            }
+        }
+        return null;
+    }
+    
+    public List<Account> selectAccountList() throws SQLException{
+        String sql = "select * from account order by account_id asc";
+        List<Account> list = new ArrayList<>();
+        try(Connection conn = DriverManager.getConnection(DBSetting.URL, DBSetting.USER, DBSetting.PASS)){
+            try(PreparedStatement stmt = conn.prepareStatement(sql)){
+                ResultSet results = stmt.executeQuery();
+                while(results.next()){
+                    String id = results.getString("account_id");
+                    String pass = results.getString("passphrase");
+                    String name = results.getString("account_name");
+                    list.add(new Account(id,pass,name));
+                }
+                return list;
+            }
+        }
     }
     
     public int insertAccount(Account insertObject) throws SQLException{

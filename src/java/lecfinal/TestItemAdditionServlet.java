@@ -7,6 +7,12 @@ package lecfinal;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,29 +29,36 @@ public class TestItemAdditionServlet extends AbstractSignedHttpServlet {
     @Override
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-//        //リダイレクト
-//        resp.sendRedirect("./Index");
-
-//        resp.setHeader("Pragma", "no-cache");
-//        resp.setHeader("Cache-Control", "no-cache");
-//        resp.setDateHeader("Expires", 0);
-
         req.setCharacterEncoding("utf-8");
         if("POST".equals(req.getMethod())){
-            int testType = Integer.parseInt(req.getParameter("testType"));
-            int testNumber = Integer.parseInt(req.getParameter("testNumber"));
-            String testStep = req.getParameter("testStep");
-            String expectedResult = req.getParameter("expectedResult");
-            HttpSession session = req.getSession();
-            Account account = (Account)session.getAttribute("account");
-            Product product = (Product)session.getAttribute("product");
-            TestItemBean insertObject = new TestItemBean(
-                    -1, testNumber, product.getProductId(), account.getAccountId(),
-                    testType, testStep, expectedResult,
-                    new Date(0), 0, ""
-            );
-            TestItemModel model = new TestItemModel();
-            model.submitTestItem(insertObject);
+            try {
+                int testType = Integer.parseInt(req.getParameter("testType"));
+                int testNumber = Integer.parseInt(req.getParameter("testNumber"));
+                String testStep = req.getParameter("testStep");
+                String expectedResult = req.getParameter("expectedResult");
+                DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                java.sql.Date date = new java.sql.Date(sdf.parse(req.getParameter("date")).getTime());
+                HttpSession session = req.getSession();
+                String accountId = null;
+                AccountModel accountModel = new AccountModel();
+                Account account = accountModel.getAccount(req.getParameter("accountId"));
+                //TODO この設計はいかんでしょ
+                if(account!=null){
+                    accountId = account.getAccountId();
+                }
+                int resultNum = Integer.parseInt(req.getParameter("testResult"));
+                String remarks = req.getParameter("remarks");
+                Product product = (Product)session.getAttribute("product");
+                TestItemBean insertObject = new TestItemBean(
+                        -1, testNumber, product.getProductId(), accountId,
+                        testType, testStep, expectedResult,
+                        date, resultNum, remarks
+                );
+                TestItemModel model = new TestItemModel();
+                model.submitTestItem(insertObject);
+            } catch (ParseException | ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(TestItemAdditionServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/testItemAddition.jsp");

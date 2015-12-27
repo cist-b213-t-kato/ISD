@@ -4,6 +4,13 @@
     Author     : Etude
 --%>
 
+<%@page import="lecfinal.TestItemAdditionServlet"%>
+<%@page import="lecfinal.TestResultDefinition"%>
+<%@page import="lecfinal.Account"%>
+<%@page import="lecfinal.AccountModel"%>
+<%@page import="java.sql.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="lecfinal.TestTypeDefinition"%>
 <%@page import="lecfinal.Product"%>
 <%@page import="lecfinal.TestItemBean"%>
@@ -17,8 +24,7 @@
     <meta http-equiv="Content-Language" content="ja" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Cache-Control" content="no-store" />
-    <meta http-equiv="Cache-Control" content="no-cache" />
-    <meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT" />
+    <meta http-equiv="Expires" content="0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=480px, initial-scale=1.0">
     <title>JSP Page</title>
@@ -30,34 +36,17 @@
         Product product = (Product)session.getAttribute("product");
     %>
     <label>製品 <%=product.getProductName()%> のテスト項目を追加する</label>
-    <table class="blueTable" width="500px">
-        <tr>
-            <th width="50px">番号</th>
-            <th width="70px">種別</th>
-            <th width="200px">実行ステップ</th>
-            <th width="150px">期待される出力</th>
-        </tr>
-        <%
-            TestItemModel model = new TestItemModel();
-            int id = ((Product)session.getAttribute("product")).getProductId();
-            for(TestItemBean testItem : model.getTestItemListByProductId(id) ){
-        %>
-        <tr>
-            <td><%=testItem.getTestNumber()%></td>
-            <td><%=TestTypeDefinition.toLabel(testItem.getTestType())%></td>
-            <td><%=testItem.getTestStep()%></td>
-            <td><%=testItem.getExpectedResult()%></td>
-        </tr>
-        <%
-            }
-        %>
-    </table>
+    <jsp:include page="./testItemTable.jsp"/>
     
-    <form action="./TestItemEdit" method="POST">
+    <form action="./TestItemAddition" method="POST">
     <table border="0" width="500px">
         <tr>
+            <%
+                TestItemModel testItemModel = new TestItemModel();
+                int defValue = testItemModel.getNextTestItemNumberByProductId(product.getProductId());
+            %>
             <td align="right">テスト番号</td>
-            <td><input name="testNumber" rows="1" style="width:50%" required/></td>
+            <td><input name="testNumber" type="number" rows="1" style="width:50%" value="<%=defValue%>" required/></td>
         </tr>
         <tr>
             <td align="right">種別</td>
@@ -81,8 +70,53 @@
             <td align="right">期待される出力</td>
             <td><textarea name="expectedResult" rows="1" style="width:100%"></textarea></td>
         </tr>
+        <tr>
+            <td align="right">実施日</td>
+            <td><input type="datetime" value="<%=new Date(System.currentTimeMillis())%>" name="date"></td>
+        </tr>
+        <tr>
+            <td align="right">実施担当者</td>
+            <td>
+                <select name="accountId">
+                    <option value="">なし</option>
+                    <%
+                        AccountModel accountModel = new AccountModel();
+                        for(Account a : accountModel.getAccountList()){
+                    %>
+                        <option value="<%=a.getAccountId()%>"><%=a.getAccountName()%></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                結果
+            </td>
+            <td>
+                <select name="testResult">
+                    <%
+                        for(TestResultDefinition t :TestResultDefinition.values()){
+                    %>
+                        <option value="<%=t.getNum()%>"><%=t.getLabel()%></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">備考</td>
+            <td><textarea name="remarks" rows="1" style="width:100%"></textarea></td>
+        </tr>
     </table>
     <input style="width:80px; text-align:center;" type="submit" value="追加する"/>
     </form>
+    <div style="margin-top: 20px">
+        <a href="./TestItemAddition">テスト項目の追加</a><br/>
+        <a href="./TestItemChange">テスト項目の変更</a><br/>
+        <a href="./TestItemDelete">テスト項目の削除</a><br/>
+    </div>
 </body>
 </html>

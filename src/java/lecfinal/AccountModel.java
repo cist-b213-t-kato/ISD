@@ -6,6 +6,7 @@
 package lecfinal;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -22,5 +23,16 @@ public class AccountModel {
         AccountDAO dao = new AccountDAO();
         return dao.selectAccount(id, pass);
     }
+    
+    public Account getAccount(String id) throws ClassNotFoundException, SQLException{
+        AccountDAO dao = new AccountDAO();
+        return dao.selectAccount(id);
+    }
+    
+    public List<Account> getAccountList() throws ClassNotFoundException, SQLException{
+        AccountDAO dao = new AccountDAO();
+        return dao.selectAccountList();
+    }
+    
     
 }

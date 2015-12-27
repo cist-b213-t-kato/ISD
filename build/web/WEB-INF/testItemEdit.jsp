@@ -30,28 +30,7 @@
         Product product = (Product)session.getAttribute("product");
     %>
     <label>製品 <%=product.getProductName()%> のテスト項目</label>
-    <table class="blueTable" width="500px">
-        <tr>
-            <th width="50px">番号</th>
-            <th width="70px">種別</th>
-            <th width="200px">実行ステップ</th>
-            <th width="150px">期待される出力</th>
-        </tr>
-        <%
-            TestItemModel model = new TestItemModel();
-            int id = ((Product)session.getAttribute("product")).getProductId();
-            for(TestItemBean testItem : model.getTestItemListByProductId(id) ){
-        %>
-        <tr>
-            <td><%=testItem.getTestNumber()%></td>
-            <td><%=TestTypeDefinition.toLabel(testItem.getTestType())%></td>
-            <td><%=testItem.getTestStep()%></td>
-            <td><%=testItem.getExpectedResult()%></td>
-        </tr>
-        <%
-            }
-        %>
-    </table>
+    <jsp:include page="./testItemTable.jsp"/>
     
     <a href="./TestItemAddition">テスト項目の追加</a><br/>
     <a href="./TestItemChange">テスト項目の変更</a><br/>

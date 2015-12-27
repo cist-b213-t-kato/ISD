@@ -4,6 +4,10 @@
     Author     : Etude
 --%>
 
+<%@page import="lecfinal.TestResultDefinition"%>
+<%@page import="java.sql.Date"%>
+<%@page import="lecfinal.Account"%>
+<%@page import="lecfinal.AccountModel"%>
 <%@page import="lecfinal.TestTypeDefinition"%>
 <%@page import="lecfinal.Product"%>
 <%@page import="lecfinal.TestItemBean"%>
@@ -30,28 +34,7 @@
         Product product = (Product)session.getAttribute("product");
     %>
     <label>製品 <%=product.getProductName()%> のテスト項目を変更する</label>
-    <table class="blueTable" width="500px">
-        <tr>
-            <th width="50px">番号</th>
-            <th width="70px">種別</th>
-            <th width="200px">実行ステップ</th>
-            <th width="150px">期待される出力</th>
-        </tr>
-        <%
-            TestItemModel model = new TestItemModel();
-            int id = ((Product)session.getAttribute("product")).getProductId();
-            for(TestItemBean testItem : model.getTestItemListByProductId(id) ){
-        %>
-        <tr>
-            <td><%=testItem.getTestNumber()%></td>
-            <td><%=TestTypeDefinition.toLabel(testItem.getTestType())%></td>
-            <td><%=testItem.getTestStep()%></td>
-            <td><%=testItem.getExpectedResult()%></td>
-        </tr>
-        <%
-            }
-        %>
-    </table>
+    <jsp:include page="./testItemTable.jsp"/>
     
     <form action="./TestItemChange" method="POST">
     <table border="0" width="500px">
@@ -61,7 +44,9 @@
                 <!--<input name="testNumber" rows="1" style="width:50%" required/>-->
                 <select name="testNumber">
                 <%
-                    for(TestItemBean t : model.getTestItemListByProductId(id)){
+                    TestItemModel testItemModel = new TestItemModel();
+                    int id = ((Product)session.getAttribute("product")).getProductId();
+                    for(TestItemBean t : testItemModel.getTestItemListByProductId(id)){
                 %>
                     <option value="<%=t.getTestNumber()%>"><%=t.getTestNumber()%></option>
                 <%
@@ -92,8 +77,52 @@
             <td align="right">期待される出力</td>
             <td><textarea name="expectedResult" rows="1" style="width:100%"></textarea></td>
         </tr>
+        <tr>
+            <td align="right">実施日</td>
+            <td><input type="datetime" value="<%=new Date(System.currentTimeMillis())%>" name="date"></td>
+        </tr>
+        <tr>
+            <td align="right">実施担当者</td>
+            <td>
+                <select name="accountId">
+                    <option value="">なし</option>
+                    <%
+                        AccountModel accountModel = new AccountModel();
+                        for(Account a : accountModel.getAccountList()){
+                    %>
+                        <option value="<%=a.getAccountId()%>"><%=a.getAccountName()%></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                結果
+            </td>
+            <td>
+                <select name="testResult">
+                    <%
+                        for(TestResultDefinition t :TestResultDefinition.values()){
+                    %>
+                        <option value="<%=t.getNum()%>"><%=t.getLabel()%></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">備考</td>
+            <td><textarea name="remarks" rows="1" style="width:100%"></textarea></td>
+        </tr>
     </table>
     <input style="width:80px; text-align:center;" type="submit" value="変更する"/>
     </form>
+    <br/>
+    <a href="./TestItemAddition">テスト項目の追加</a><br/>
+    <a href="./TestItemChange">テスト項目の変更</a><br/>
+    <a href="./TestItemDelete">テスト項目の削除</a><br/>
 </body>
 </html>

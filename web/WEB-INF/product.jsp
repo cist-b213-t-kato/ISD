@@ -55,7 +55,7 @@
     <table border="0" width="300px">
         <tr>
             <td style="width:100px" align="right">製品番号</td>
-            <td><input name="product_id" rows="1" style="width:100%"/></textarea></td>
+            <td><input name="product_id" type="number" rows="1" style="width:100%"/></textarea></td>
         </tr>
         <tr>
             <td style="width:100px" align="right">製品名</td>

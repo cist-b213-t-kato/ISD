@@ -57,6 +57,16 @@ public class TestItemModel {
         }        
     }
     
+    public int getNextTestItemNumberByProductId(int productId){
+        try {
+            TestItemDAO dao = new TestItemDAO();
+            return dao.getNextTestItemNumberByProductId(productId);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(TestItemModel.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+    
     public static void main(String[] args){
         TestItemModel model = new TestItemModel();
         TestItemBean updateObject = new TestItemBean(

@@ -30,28 +30,7 @@
         Product product = (Product)session.getAttribute("product");
     %>
     <label>製品 <%=product.getProductName()%> のテスト項目を削除する</label>
-    <table class="blueTable" width="500px">
-        <tr>
-            <th width="50px">番号</th>
-            <th width="70px">種別</th>
-            <th width="200px">実行ステップ</th>
-            <th width="150px">期待される出力</th>
-        </tr>
-        <%
-            TestItemModel model = new TestItemModel();
-            int id = ((Product)session.getAttribute("product")).getProductId();
-            for(TestItemBean testItem : model.getTestItemListByProductId(id) ){
-        %>
-        <tr>
-            <td><%=testItem.getTestNumber()%></td>
-            <td><%=TestTypeDefinition.toLabel(testItem.getTestType())%></td>
-            <td><%=testItem.getTestStep()%></td>
-            <td><%=testItem.getExpectedResult()%></td>
-        </tr>
-        <%
-            }
-        %>
-    </table>
+    <jsp:include page="./testItemTable.jsp"/>
     
     <form action="./TestItemDelete" method="POST">
     <table border="0">
@@ -60,7 +39,9 @@
             <td>
                 <select name="testNumber">
                 <%
-                    for(TestItemBean t : model.getTestItemListByProductId(id)){
+                    TestItemModel testItemModel = new TestItemModel();
+                    int id = ((Product)session.getAttribute("product")).getProductId();
+                    for(TestItemBean t : testItemModel.getTestItemListByProductId(id)){
                 %>
                     <option value="<%=t.getTestNumber()%>"><%=t.getTestNumber()%></option>
                 <%
@@ -72,5 +53,9 @@
     </table>
     <input style="width:80px; text-align:center;" type="submit" value="削除する"/>
     </form>
+    <br/>
+    <a href="./TestItemAddition">テスト項目の追加</a><br/>
+    <a href="./TestItemChange">テスト項目の変更</a><br/>
+    <a href="./TestItemDelete">テスト項目の削除</a><br/>
 </body>
 </html>
