@@ -37,7 +37,12 @@ public class TestItemAdditionServlet extends AbstractSignedHttpServlet {
                 String testStep = req.getParameter("testStep");
                 String expectedResult = req.getParameter("expectedResult");
                 DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                java.sql.Date date = new java.sql.Date(sdf.parse(req.getParameter("date")).getTime());
+                java.sql.Date date = null;
+                try{
+                    date = new java.sql.Date(sdf.parse(req.getParameter("date")).getTime());
+                }catch(ParseException ex2){
+                    Logger.getLogger(TestItemAdditionServlet.class.getName()).log(Level.SEVERE, null, ex2);
+                }
                 HttpSession session = req.getSession();
                 String accountId = null;
                 AccountModel accountModel = new AccountModel();
@@ -56,7 +61,7 @@ public class TestItemAdditionServlet extends AbstractSignedHttpServlet {
                 );
                 TestItemModel model = new TestItemModel();
                 model.submitTestItem(insertObject);
-            } catch (ParseException | ClassNotFoundException | SQLException ex) {
+            } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(TestItemAdditionServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

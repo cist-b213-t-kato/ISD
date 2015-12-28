@@ -46,7 +46,7 @@
                 int defValue = testItemModel.getNextTestItemNumberByProductId(product.getProductId());
             %>
             <td align="right">テスト番号</td>
-            <td><input name="testNumber" type="number" rows="1" style="width:50%" value="<%=defValue%>" required/></td>
+            <td><input name="testNumber" type="number" rows="1" style="width:50%" value="<%=defValue%>" min="1" required/></td>
         </tr>
         <tr>
             <td align="right">種別</td>
