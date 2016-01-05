@@ -47,9 +47,8 @@ public abstract class AbstractSignedHttpServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = req.getSession();
         Account account = (Account) session.getAttribute("account");
-        RequestDispatcher rd;
         if(null==account){
-            rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
             rd.forward(req, resp);            
         }
         processRequest(req, resp);
@@ -68,9 +67,8 @@ public abstract class AbstractSignedHttpServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = req.getSession();
         Account account = (Account) session.getAttribute("account");
-        RequestDispatcher rd;
         if(null==account){
-            rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/signIn.jsp");
             rd.forward(req, resp);            
         }
         processRequest(req, resp);

@@ -26,14 +26,13 @@ public class SignInConcentServlet extends HttpServlet{
     
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException, ClassNotFoundException, SQLException{
-        //TODO サインイン機能を完成させる
-       
+        
         String id = req.getParameter("userId");
         String pass = req.getParameter("passphrase");
         
         AccountModel model = new AccountModel();
         
-        Account account = model.getAccount(id, pass);//new Account("","","ももも");
+        Account account = model.getAccount(id, pass);
         
         if(null!=account){
             HttpSession session = req.getSession();
@@ -43,8 +42,7 @@ public class SignInConcentServlet extends HttpServlet{
         }else{
             HttpSession session = req.getSession();
             session.setAttribute("systemMessage", "<p>サインインできませんでした</p>");
-            RequestDispatcher rd;
-            rd = req.getRequestDispatcher("/WEB-INF/systemMessage.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/systemMessage.jsp");
             rd.forward(req, resp);
         }
     }

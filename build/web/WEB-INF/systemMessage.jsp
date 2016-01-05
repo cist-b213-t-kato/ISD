@@ -17,5 +17,6 @@
     <label>
         <%=systemMessage%>
     </label>
+    <a href="./SignIn">サインインページに戻る</a>
 </body>
 </html>

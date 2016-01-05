@@ -21,9 +21,6 @@ public class IndexServlet extends AbstractSignedHttpServlet {
     @Override
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-//        //リダイレクト
-//        resp.sendRedirect("./Index");
-        
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/index.jsp");
         rd.forward(req, resp);
         
