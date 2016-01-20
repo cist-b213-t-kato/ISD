@@ -18,11 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
-<<<<<<< HEAD
- *
-=======
  * 直リンしたときにSignInにdispatchしてるみたい？
->>>>>>> master
  * @author Etude
  */
 @WebServlet(urlPatterns = {"/lecfinal/Concent"})
