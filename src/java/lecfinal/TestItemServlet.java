@@ -25,10 +25,6 @@ public class TestItemServlet extends AbstractSignedHttpServlet {
 //        //リダイレクト
 //        resp.sendRedirect("./Index");
 
-//        resp.setHeader("Pragma","no-cache");
-//        resp.setHeader("Cache-Control","no-cache");
-//        resp.setDateHeader("Expires",0);
-
         req.setCharacterEncoding("utf-8");
         if("POST".equals(req.getMethod())){
             int id = Integer.parseInt(req.getParameter("product_id"));

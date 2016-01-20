@@ -3,11 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/product.jsp</file>
             <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/testItemAddition.jsp</file>
             <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec06/SafeInputDBSprinter.java</file>
             <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/SignInServlet.java</file>
             <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/ProductServlet.java</file>
+=======
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/SignUpServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec09/ErrorView.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/ProductDAO.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec09/ChatDAO.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec09/ChatModel.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/index.jsp</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/IndexServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec01/SubmitSprinterServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/AbstractSignedHttpServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec09/ChatController.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/SignInServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/ProductServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/DBSetting.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/signIn.jsp</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/default.css</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/ProductModel.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/signUp.jsp</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/header.jsp</file>
+>>>>>>> origin/master
         </group>
     </open-files>
 </project-private>

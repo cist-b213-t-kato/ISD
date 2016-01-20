@@ -9,7 +9,11 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
     <title>サインイン</title>
+=======
+    <title>JSP Page</title>
+>>>>>>> origin/master
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/isd2015/default.css"/>
 </head>
 <body>
@@ -27,6 +31,9 @@
         <input type="submit" style="width:200px" value="ログイン"/>
     </div>
     </form>
+<<<<<<< HEAD
     <a href="./SignUp">新規ユーザー登録</a><br/>
+=======
+>>>>>>> origin/master
 </body>
 </html>
