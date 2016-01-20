@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/product.jsp</file>
-            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/testItemAddition.jsp</file>
-            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lec06/SafeInputDBSprinter.java</file>
-            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/SignInServlet.java</file>
-            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/ProductServlet.java</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/web/WEB-INF/testItem.jsp</file>
+            <file>file:/C:/Users/Etude/Documents/NetBeansProjects/isd2015/src/java/lecfinal/TestItemServlet.java</file>
         </group>
     </open-files>
 </project-private>
