@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Etude
  */
-@WebServlet(name = "HttpServletEx", urlPatterns = {"/HttpServletEx"})
+//@WebServlet(name = "HttpServletEx", urlPatterns = {"/HttpServletEx"})
 public abstract class AbstractSignedHttpServlet extends HttpServlet {
 
     /**

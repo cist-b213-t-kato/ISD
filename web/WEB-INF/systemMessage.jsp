@@ -17,6 +17,17 @@
     <label>
         <%=systemMessage%>
     </label>
+<<<<<<< HEAD
     <a href="./SignIn">サインインページに戻る</a>
+=======
+<<<<<<< HEAD
+    <a href="./SignIn">サインインページに戻る</a>
+=======
+<<<<<<< HEAD
+    <a href="./SignIn">サインインページに戻る</a>
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> master
 </body>
 </html>

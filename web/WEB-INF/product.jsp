@@ -63,6 +63,7 @@
         </tr>
     </table>
     <input style="width:80px; text-align:center;" type="submit" value="追加する"/>
+    <input type="hidden" name="token" value="<%=session.getId()%>"/>
     </form>
 </body>
 </html>
