@@ -22,30 +22,8 @@ public class ProductServlet extends AbstractSignedHttpServlet {
     @Override
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-<<<<<<< HEAD
-//        //リダイレクト
-//        resp.sendRedirect("./Index");
-
-//        resp.setHeader("Pragma","no-cache");
-//        resp.setHeader("Cache-Control","no-cache");
-//        resp.setDateHeader("Expires",0);
-
         req.setCharacterEncoding("utf-8");
         if("POST".equals(req.getMethod())){
-=======
-        req.setCharacterEncoding("utf-8");
-        
-        if("POST".equals(req.getMethod())){
-            
-            //csrf回避
-            String token = req.getParameter("token");
-            String sessionId = req.getSession().getId();
-            boolean csrf = !sessionId.equals(token);
-            if(csrf){
-                throw new ServletException("This is in danger of CSRF");
-            }
-            
->>>>>>> master
             String idStr = req.getParameter("product_id");
             String name = req.getParameter("product_name");
             int id = Integer.parseInt(idStr);

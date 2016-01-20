@@ -38,16 +38,7 @@ public class TestItemChangeServlet extends AbstractSignedHttpServlet {
                 String expectedResult = req.getParameter("expectedResult");
                 HttpSession session = req.getSession();
                 DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-<<<<<<< HEAD
                 java.sql.Date date = new java.sql.Date(sdf.parse(req.getParameter("date")).getTime());
-=======
-                java.sql.Date date = null;
-                try {
-                    date = new java.sql.Date(sdf.parse(req.getParameter("date")).getTime());
-                } catch (ParseException ex) {
-                    Logger.getLogger(TestItemChangeServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
->>>>>>> master
                 String accountId = null;
                 AccountModel accountModel = new AccountModel();
                 Account account = accountModel.getAccount(req.getParameter("accountId"));
@@ -65,11 +56,7 @@ public class TestItemChangeServlet extends AbstractSignedHttpServlet {
                 );
                 TestItemModel model = new TestItemModel();
                 model.changeTestItem(updateObject);
-<<<<<<< HEAD
             } catch (ParseException | ClassNotFoundException | SQLException ex) {
-=======
-            } catch (ClassNotFoundException | SQLException ex) {
->>>>>>> master
                 Logger.getLogger(TestItemChangeServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
